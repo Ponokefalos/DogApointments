@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="DogApointments.DoctorAppointments"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DogApointments"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel >
+        <StackPanel.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/orange_purple.jpg"/>
+        </StackPanel.Background>
+        <RelativePanel HorizontalAlignment="Center" Height="157"  VerticalAlignment="Top" Width="360">
+            <TextBlock x:Name="txtWelcome" TextWrapping="Wrap" Text="Doctor Apointments" Margin="0,71,-260,-91.667" Foreground="White" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        </RelativePanel>
+
+        <RelativePanel Height="484" HorizontalAlignment="Center"  Width="340" VerticalAlignment="Top" Margin="10,0">
+            <ListView x:Name="gvApointList" HorizontalAlignment="Center" Height="400" VerticalAlignment="Top" Width="330" Foreground="White" IsSynchronizedWithCurrentItem="False"  SelectionChanged="gvApointList_SelectionChanged" Margin="0,0,-69,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <Image Source="Assets/Overtime-48.png" Height="23" Width="28" Margin="0,0,10,0"/>
+                            <StackPanel>
+                                <TextBlock FontSize="20" Foreground="White" Text="{Binding Subject}"></TextBlock>
+                                <TextBlock x:Name="txtLocation" FontSize="18" Foreground="White" Text="{Binding Location}"></TextBlock>
+                                <TextBlock x:Name="txtStartTime" FontSize="13" Foreground="White" Text="{Binding StartTime}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel x:Name="stackNewDoctor" Width="330" Height="100" Margin="0,374,0,-374" Tapped="stackNewDoctor_Tapped">
+                <Image Source="Assets/Add Property-48.png" Stretch="None" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+
+
+        </RelativePanel>
+
+
+    </StackPanel>
+</Page>
