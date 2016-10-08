@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -49,10 +50,7 @@ namespace DogApointments
         }
 
 
-        private async void btnAddAp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -153,12 +151,12 @@ namespace DogApointments
                 String appointmentId = await Windows.ApplicationModel.Appointments.AppointmentManager.ShowAddAppointmentAsync(appointment, rect, Windows.UI.Popups.Placement.Default);
                 if (appointmentId != String.Empty)
                 {
-                    showMessageDialog("Appointment Id: " + appointmentId);
+                    Debug.Write("Appointment Id: " + appointmentId);
 
                 }
                 else
                 {
-                    showMessageDialog("Appointment not added.");
+                    Debug.Write("Appointment not added.");
 
                 }
 
@@ -180,20 +178,9 @@ namespace DogApointments
                     localSettings.Containers["AppointmentContainer"].Values["list"] = idToSave;
 
                 }
-
-
-
-
-
-
-
-
-
-
-                // ap = new ApointmentClass(appointment.StartTime, appointment.Subject, appointment.Location, appointment.Details, appointment.Duration, appointment.AllDay);
-
+               
                 App.apList.Add(appointment);
-                showMessageDialog("nai re mounia mpike to appointment stin lista");
+               
 
                 if (localSettings.Containers.ContainsKey("AppointmentContainer"))
                 {
@@ -203,7 +190,7 @@ namespace DogApointments
             }
             catch (Exception ex)
             {
-                showMessageDialog("Exception sto idio gamimeno prama");
+               Debug.Write("Exception sto idio gamimeno prama");
             }
         }
         private Windows.Foundation.Rect GetElementRect(FrameworkElement element)
